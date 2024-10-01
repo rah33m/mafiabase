@@ -13,6 +13,7 @@ import IndexPage from "./routes";
 import SignInPage from "./routes/sign-in";
 import SignUpPage from "./routes/sign-up";
 import DashboardPage from "./routes/dashboard";
+import Crime from "./routes/crime";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +22,16 @@ const router = createBrowserRouter([
       { path: "/", element: <IndexPage /> },
       { path: "/sign-in/*", element: <SignInPage /> },
       { path: "/sign-up/*", element: <SignUpPage /> },
+
       {
         element: <DashboardLayout />,
         path: "dashboard",
         children: [{ path: "/dashboard", element: <DashboardPage /> }],
+      },
+      {
+        element: <DashboardLayout />,
+        path: "crime",
+        children: [{ path: "/crime", element: <Crime /> }],
       },
     ],
   },

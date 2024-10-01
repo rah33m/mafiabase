@@ -5,6 +5,8 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/clerk-react";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -22,16 +24,10 @@ export default function RootLayout() {
       publishableKey={PUBLISHABLE_KEY}
     >
       <header className="header">
-        <div>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <SignedOut>
-            <Link to="/sign-in">Sign In</Link>
-          </SignedOut>
-        </div>
+        <Header />
       </header>
       <main>
+        <Sidebar />
         <Outlet />
       </main>
     </ClerkProvider>
