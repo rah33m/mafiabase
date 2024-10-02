@@ -27,8 +27,22 @@ export default function RootLayout() {
         <Header />
       </header>
       <main>
-        <Sidebar />
-        <Outlet />
+        <div className="flex h-screen">
+          {/* Left Sidebar */}
+          <aside className="w-1/5 p-4">
+            <Sidebar />
+          </aside>
+
+          {/* Main Content (This is where the changing pages will render) */}
+          <main className="flex-1  p-4">
+            <Outlet /> {/* This will display the dynamic page content */}
+          </main>
+
+          {/* Right Sidebar */}
+          <aside className="w-1/5 p-4">
+            <Sidebar />
+          </aside>
+        </div>
       </main>
     </ClerkProvider>
   );
