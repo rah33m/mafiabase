@@ -1,10 +1,26 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getCookie = (name: string) => {
+      const cookieString = document.cookie;
+      const cookies = cookieString
+        .split("; ")
+        .find((row) => row.startsWith(`${name}=`));
+      return cookies ? cookies.split("=")[1] : null;
+    };
+
+    const token = getCookie("token");
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   const [data, setData] = useState({
     email: "",
     password: "",

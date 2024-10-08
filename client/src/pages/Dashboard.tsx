@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import useAuth from "../authcheck/checkToken";
 
 export default function Dashboard() {
+  useAuth();
   const { user } = useContext(UserContext);
   return (
     <div>
